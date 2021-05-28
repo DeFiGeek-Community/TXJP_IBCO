@@ -2,8 +2,8 @@ pragma solidity 0.6.12;
 
 /**
  * SPDX-License-Identifier: GPL-3.0-or-later
- * Hegic
- * Copyright (C) 2020 Hegic
+ * TXJP
+ * Copyright (C) 2020 TXJP
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ pragma solidity 0.6.12;
  import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-contract FakeHEGIC is ERC20("FakeHEGIC", "FAKEH") {
+contract FakeTXJP is ERC20("FakeTXJP", "FAKET") {
     function mintTo(address account, uint256 amount) public {
         _mint(account, amount);
     }

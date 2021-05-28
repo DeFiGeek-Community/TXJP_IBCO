@@ -1,7 +1,7 @@
 
-const HEGICContract = artifacts.require("FakeHEGIC")
-const HegicIOContract = artifacts.require("HegicInitialOffering")
-const BN = web3.utils.BN
+const TXJPContract = artifacts.require("FakeTXJP")
+const TXJPIOContract = artifacts.require("TXJPInitialOffering")
+const { BN, isBN, toWei, fromWei } = web3.utils
 
 
 const send = (method, params = []) =>
@@ -13,9 +13,9 @@ const send = (method, params = []) =>
   )
 
 const getIOContracts = () => Promise.all([
-    HegicIOContract.deployed(),
-    HEGICContract.deployed()
-]).then(([InitialOffering, HEGIC]) => ({InitialOffering, HEGIC}))
+    TXJPIOContract.deployed(),
+    TXJPContract.deployed()
+]).then(([InitialOffering, TXJP]) => ({InitialOffering, TXJP}))
 
 const snapshot = () => send("evm_snapshot").then(x => x.result)
 const revert = (snap) => send("evm_revert", [snap])
@@ -27,5 +27,6 @@ const timeTravel = async (seconds) => {
 module.exports = {
     getIOContracts,
     timeTravel, snapshot, revert,
-    toWei: (value) => web3.utils.toWei(value.toString(), "ether"),
+    toWei: (value) => toWei(value.toString(), "ether"),
+    fromWei: (value) => fromWei(isBN(value) ? value : new BN(value), 'ether'),
 }
