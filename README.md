@@ -24,6 +24,6 @@ A forked repository of Hegic IBCO.
 
 
 ## Miscellaneous
-- `InitialOfferling.transferOwnership(gnosisSafeAddress)` transfers ownership to a multisig
+- You can change owner by `npm run changeOwner` and so multisig can be the owner.
 - FakeTXJP on Rinkeby: 0xac2fF8285e54CE7199943866Bb791E3BAa39950b
 - TXJPInitialOffering on Rinkeby: 0x7Aa8d0782A41A5aC12d84fE573e3874D13469976
