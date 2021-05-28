@@ -24,7 +24,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 
 /**
- * @author 0mllwntrmt3
+ * @author 0xMotoko
  * @title TXJP Initial Offering
  * @notice some description
  */
