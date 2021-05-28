@@ -1,11 +1,14 @@
 const BN = web3.utils.BN
-const HEGIC = artifacts.require("FakeHEGIC")
-const InitialOffering = artifacts.require("HegicInitialOffering")
+const TXJP = artifacts.require("FakeTXJP")
+const InitialOffering = artifacts.require("TXJPInitialOffering")
 
 module.exports = async function (deployer, network) {
     if (["development", "develop", 'soliditycoverage'].indexOf(network) >= 0) {
-      await deployer.deploy(HEGIC)
-      await deployer.deploy(InitialOffering, HEGIC.address)
+      await deployer.deploy(TXJP)
+      await deployer.deploy(InitialOffering, TXJP.address)
+  } else if (["testnet", "rinkeby"].indexOf(network) >= 0) {
+      await deployer.deploy(TXJP)
+      await deployer.deploy(InitialOffering, TXJP.address)
   } else {
       throw Error(`wrong network ${network}`)
   }

@@ -2,8 +2,8 @@ pragma solidity 0.6.12;
 
 /**
  * SPDX-License-Identifier: GPL-3.0-or-later
- * Hegic
- * Copyright (C) 2020 Hegic Protocol
+ * TXJP
+ * Copyright (C) 2020 TXJP Protocol
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,26 +25,26 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
  * @author 0mllwntrmt3
- * @title Hegic Initial Offering
+ * @title TXJP Initial Offering
  * @notice some description
  */
-contract HegicInitialOffering is Ownable {
+contract TXJPInitialOffering is Ownable {
     using SafeERC20 for IERC20;
     using SafeMath for uint;
 
-    event Claimed(address indexed account, uint userShare, uint hegicAmount);
+    event Claimed(address indexed account, uint userShare, uint TXJPAmount);
     event Received(address indexed account, uint amount);
 
-    uint public constant START = 1599678000;
-    uint public constant END = START + 3 days;
-    uint public constant TOTAL_DISTRIBUTE_AMOUNT = 90_360_300e18;
-    uint public constant MINIMAL_PROVIDE_AMOUNT = 700 ether;
+    uint public constant START = 1625799600; //1day = 86400
+    uint public constant END = START + 5 days + 12 hours;
+    uint public constant TOTAL_DISTRIBUTE_AMOUNT = 36000;
+    uint public constant MINIMAL_PROVIDE_AMOUNT = 100 ether;
     uint public totalProvided = 0;
     mapping(address => uint) public provided;
-    IERC20 public immutable HEGIC;
+    IERC20 public TXJP;
 
-    constructor(IERC20 hegic) public {
-        HEGIC = hegic;
+    constructor(IERC20 _TXJP) public {
+        TXJP = _TXJP;
     }
 
     receive() external payable {
@@ -63,11 +63,11 @@ contract HegicInitialOffering is Ownable {
         provided[msg.sender] = 0;
 
         if(totalProvided >= MINIMAL_PROVIDE_AMOUNT) {
-            uint hegicAmount = TOTAL_DISTRIBUTE_AMOUNT
+            uint TXJPAmount = TOTAL_DISTRIBUTE_AMOUNT
                 .mul(userShare)
                 .div(totalProvided);
-            HEGIC.safeTransfer(msg.sender, hegicAmount);
-            emit Claimed(msg.sender, userShare, hegicAmount);
+            TXJP.safeTransfer(msg.sender, TXJPAmount);
+            emit Claimed(msg.sender, userShare, TXJPAmount);
         } else {
             msg.sender.transfer(userShare);
             emit Claimed(msg.sender, userShare, 0);
@@ -83,17 +83,17 @@ contract HegicInitialOffering is Ownable {
         payable(owner()).transfer(address(this).balance);
     }
 
-    function withdrawHEGIC() external onlyOwner {
+    function withdrawTXJP() external onlyOwner {
         require(END < block.timestamp, "The offering must be completed");
         require(
             totalProvided < MINIMAL_PROVIDE_AMOUNT,
             "The required amount has been provided!"
         );
-        HEGIC.safeTransfer(owner(), HEGIC.balanceOf(address(this)));
+        TXJP.safeTransfer(owner(), TXJP.balanceOf(address(this)));
     }
 
-    function withdrawUnclaimedHEGIC() external onlyOwner {
+    function withdrawUnclaimedTXJP() external onlyOwner {
         require(END + 30 days < block.timestamp, "Withdrawal unavailable yet");
-        HEGIC.safeTransfer(owner(), HEGIC.balanceOf(address(this)));
+        TXJP.safeTransfer(owner(), TXJP.balanceOf(address(this)));
     }
 }
