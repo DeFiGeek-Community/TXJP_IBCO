@@ -26,7 +26,7 @@ var contract = new Contract([
 
 
 (async ()=>{
-    const currentOwner = await contract.methods.owner().call();
+    const currentOwner = await contract.methods.owner().call().toLowerCase();
 
     /* You can switch addresses to test transfer on your side */
     const ownerTestObj = (currentOwner == getAddressFromPK(process.env.PK)) ? 
