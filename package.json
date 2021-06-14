@@ -13,7 +13,8 @@
     "coverage": "truffle run coverage",
     "lint": "prettier './**/*.js' './**/*.sol' './**/*.md' --write",
     "deploy:testnet": "truffle migrate --network rinkeby",
-    "changeOwner": "node scripts/transferOwnership.js"
+    "changeOwner": "node scripts/transferOwnership.js",
+    "flattener": "truffle-flattener ./contracts/InitialOffering/TXJPInitialOffering.sol | awk '/SPDX-License-Identifier/&&c++>0 {next} 1' | awk '/pragma experimental ABIEncoderV2;/&&c++>0 {next} 1' > ./OneRouter.full.sol"
   },
   "author": "",
   "license": "GPLv3",
@@ -29,7 +30,7 @@
     "prettier-plugin-solidity": "^1.0.0-alpha.55",
     "solidity-coverage": "^0.7.10",
     "truffle": "^5.1.42",
-    "truffle-flattener": "^1.4.4"
+    "truffle-flattener": "^1.5.0"
   },
   "dependencies": {
     "@chainlink/contracts": "^0.0.8",
