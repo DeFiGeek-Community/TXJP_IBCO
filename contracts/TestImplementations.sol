@@ -25,6 +25,7 @@ pragma solidity 0.6.12;
 
 contract FakeTXJP is ERC20("FakeTXJP", "FAKET") {
     function mintTo(address account, uint256 amount) public {
+        _setupDecimals(8);
         _mint(account, amount);
     }
 

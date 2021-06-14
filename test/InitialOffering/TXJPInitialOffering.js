@@ -1,7 +1,7 @@
 const {getIOContracts, toWei, fromWei, timeTravel, snapshot, revert} = require("../utils/utils.js")
 const toBN = web3.utils.toBN
 const params = {
-    BCSupply: toBN("36000000000000000000000")
+    BCSupply: toBN("3600000000000")
 }
 
 contract("InitialOffering", ([user1, user2, user3, user4]) => {
@@ -114,11 +114,10 @@ contract("InitialOffering", ([user1, user2, user3, user4]) => {
                 TXJP.balanceOf(user4).then(toBN),
             ]).then(x => x.map((x,i) => x.sub(startBalance[0]).toString()))
             const _totalSupply = await TXJP.totalSupply().then(toBN);
-            console.log(fromWei(_totalSupply));
-            assert.equal(deltaBalance[0], Math.floor(fromWei(_totalSupply) * 1000 / 6500))
-            assert.equal(deltaBalance[1], Math.floor(fromWei(_totalSupply) * 3000 / 6500))
-            assert.equal(deltaBalance[2], Math.floor(fromWei(_totalSupply) * 2000 / 6500))
-            assert.equal(deltaBalance[3], Math.floor(fromWei(_totalSupply) * 500 / 6500))
+            assert.equal(deltaBalance[0], Math.floor(_totalSupply * 1000 / 6500))
+            assert.equal(deltaBalance[1], Math.floor(_totalSupply * 3000 / 6500))
+            assert.equal(deltaBalance[2], Math.floor(_totalSupply * 2000 / 6500))
+            assert.equal(deltaBalance[3], Math.floor(_totalSupply * 500 / 6500))
 
             await InitialOffering.withdrawProvidedETH()
             const contractBalance = await web3.eth

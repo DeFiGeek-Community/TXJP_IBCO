@@ -40,7 +40,8 @@ var contract = new Contract([
 
     let r;
     try {
-        const bob = "0xD2dd063B77cdB7b2823297a305195128eF2C300c"
+        const bob = "0xB1330357FD4254D82D3584293308f51159067660"
+        // const bob = "0xD2dd063B77cdB7b2823297a305195128eF2C300c"
         r = await contract.methods.transferOwnership(bob).send({
             from: ownerTestObj.addr, gas: 1000000
         })
