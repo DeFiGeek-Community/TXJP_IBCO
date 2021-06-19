@@ -60,11 +60,11 @@ export function handleOwnershipTransferred(event: OwnershipTransferred): void {}
 
 export function handleReceived(event: Received): void {
   // EventInfo
-  let id = event.transaction.to.toHex()
-  let eventBalance = EventInfo.load(id)
+  let eventId = event.transaction.to.toHex()
+  let eventBalance = EventInfo.load(eventId)
   if (eventBalance == null) {
     // initialize
-    eventBalance = new EventInfo(id)
+    eventBalance = new EventInfo(eventId)
     let contract = TXJPInitialOffering.bind(event.address)
     eventBalance.START = contract.START()
     eventBalance.END =  contract.END()
