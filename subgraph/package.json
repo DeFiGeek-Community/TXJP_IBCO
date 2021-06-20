@@ -1,17 +1,17 @@
 {
-  "name": "ibco-test-1",
+  "name": "subgraph",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
     "prepare:mainnet":"mustache config/mainnet.json subgraph.template.yaml > subgraph.yaml",
     "prepare:rinkeby":"mustache config/rinkeby.json subgraph.template.yaml > subgraph.yaml",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ 0xTeaTwo/ibco-test-1",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ 0xTeaTwo/TXJP_IBCO-1",
     "deploy:mainnet": "yarn prepare:mainnet && yarn deploy",
     "deploy:rinkeby": "yarn prepare:rinkeby && yarn deploy",
-    "create-local": "graph create --node http://localhost:8020/ 0xTeaTwo/ibco-test-1",
-    "remove-local": "graph remove --node http://localhost:8020/ 0xTeaTwo/ibco-test-1",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 0xTeaTwo/ibco-test-1"
+    "create-local": "graph create --node http://localhost:8020/ 0xTeaTwo/TXJP_IBCO-1",
+    "remove-local": "graph remove --node http://localhost:8020/ 0xTeaTwo/TXJP_IBCO-1",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 0xTeaTwo/TXJP_IBCO-1"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.20.1",
