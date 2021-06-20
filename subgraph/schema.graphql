@@ -6,7 +6,6 @@ type EventInfo @entity {
   TOTAL_DISTRIBUTE_AMOUNT: BigInt! # uint256
   totalProvided: BigInt! # uint256
   totalClaimed: BigInt! # uint256
-  balanceOfTXJP: BigInt! # uint256
 }
 
 "mapping(address => uint) public provided"

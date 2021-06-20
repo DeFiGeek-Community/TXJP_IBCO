@@ -110,6 +110,7 @@ export function handleReceived(event: Received): void {
     personalBalance = new PersonalBalance(personalId)
     personalBalance.amount = BigInt.fromI32(0)
     personalBalance.claimed = false
+    personalBalance.claimedTXJPAmount = BigInt.fromI32(0)
   }
 
   // update provided

@@ -95,15 +95,6 @@ export class EventInfo extends Entity {
   set totalClaimed(value: BigInt) {
     this.set("totalClaimed", Value.fromBigInt(value));
   }
-
-  get balanceOfTXJP(): BigInt {
-    let value = this.get("balanceOfTXJP");
-    return value.toBigInt();
-  }
-
-  set balanceOfTXJP(value: BigInt) {
-    this.set("balanceOfTXJP", Value.fromBigInt(value));
-  }
 }
 
 export class PersonalBalance extends Entity {
