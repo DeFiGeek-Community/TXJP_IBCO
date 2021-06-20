@@ -14,7 +14,6 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - ExampleEntity
         - EventInfo
         - PersonalBalance
       abis:
@@ -23,8 +22,6 @@ dataSources:
       eventHandlers:
         - event: Claimed(indexed address,uint256,uint256)
           handler: handleClaimed
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Received(indexed address,uint256)
           handler: handleReceived
       file: ./src/mapping.ts
