@@ -1,0 +1,18 @@
+type EventInfo @entity {
+  id: ID!
+  START: BigInt! # uint256
+  END: BigInt! # uint256
+  MINIMAL_PROVIDE_AMOUNT: BigInt! # uint256
+  TOTAL_DISTRIBUTE_AMOUNT: BigInt! # uint256
+  totalProvided: BigInt! # uint256
+  totalClaimed: BigInt! # uint256
+  balanceOfTXJP: BigInt! # uint256
+}
+
+"mapping(address => uint) public provided"
+type PersonalBalance @entity {
+  id: ID! # Set to account address
+  amount: BigInt! # uint256
+  claimed: Boolean!
+  claimedTXJPAmount: BigInt! # uint256
+}

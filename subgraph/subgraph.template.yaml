@@ -1,0 +1,27 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: TXJPInitialOffering
+    network: {{network}}
+    source:
+      address: '{{address}}'
+      abi: TXJPInitialOffering
+      startBlock: {{blockNumber}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - EventInfo
+        - PersonalBalance
+      abis:
+        - name: TXJPInitialOffering
+          file: ./abis/TXJPInitialOffering.json
+      eventHandlers:
+        - event: Claimed(indexed address,uint256,uint256)
+          handler: handleClaimed
+        - event: Received(indexed address,uint256)
+          handler: handleReceived
+      file: ./src/mapping.ts
