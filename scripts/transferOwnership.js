@@ -6,7 +6,7 @@ const alice = "0xdAe503Fd260358b8f344D136160c299530006170"
 const Eth = require('web3-eth')
 const eth = new Eth(`https://rinkeby.infura.io/v3/${process.env.INFURA_KEY}`)
 const { Contract } = eth
-const { privateToAddress, toBuffer } = require('ethereumjs-util')
+const { computeAddress } = require('ethers').utils
 
 var contract = new Contract([
     {
@@ -29,7 +29,7 @@ var contract = new Contract([
     const currentOwner = await contract.methods.owner().call();
 
     /* You can switch addresses to test transfer on your side */
-    const ownerTestObj = (currentOwner.toLowerCase() === getAddressFromPK(process.env.PK)) ?
+    const ownerTestObj = (currentOwner === getAddressFromPK(process.env.PK)) ?
         { pk: process.env.PK, addr: getAddressFromPK(process.env.PK) }
         :
         { pk: process.env.PK2, addr: getAddressFromPK(process.env.PK2) }
@@ -53,5 +53,5 @@ var contract = new Contract([
 
 
 function getAddressFromPK(pk){
-    return '0x'+privateToAddress(toBuffer('0x' + pk)).toString('hex');
+    return computeAddress(`0x${pk}`);
 }
