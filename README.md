@@ -6,8 +6,8 @@ A forked repository of Hegic IBCO.
 ### Contract properties
 - totalProvided = ETH amount which is accumulated on the contract
 - START = 2021/7/9 JST 12:00 in unixtime (sec) for TXJP
-- END = after 5 days 12 hours of START. Modification of it can break tests.
-- MINIMAL_PROVIDE_AMOUNT = Currently 100 ether. This value is tightly-coupled with test code. Carefully change it and enhance `./test`
+- END = after 5 days 9 hours of START. Modification of it can break tests.
+- MINIMAL_PROVIDE_AMOUNT = Currently 1 ether. This value is tightly-coupled with test code. Carefully change it and enhance `./test`
 - initial owner = deployer
 
 ### Behavior
@@ -25,5 +25,3 @@ A forked repository of Hegic IBCO.
 
 ## Miscellaneous
 - You can change owner by `npm run changeOwner` and so multisig can be the owner.
-- FakeTXJP on Rinkeby: 0xac2fF8285e54CE7199943866Bb791E3BAa39950b
-- TXJPInitialOffering on Rinkeby: 0x7Aa8d0782A41A5aC12d84fE573e3874D13469976
