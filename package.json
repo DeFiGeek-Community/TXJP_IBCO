@@ -13,6 +13,7 @@
     "coverage": "truffle run coverage",
     "lint": "prettier './**/*.js' './**/*.sol' './**/*.md' --write",
     "deploy:testnet": "truffle migrate --network rinkeby",
+    "deploy:mainnet": "truffle migrate --network main",
     "changeOwner": "node scripts/transferOwnership.js",
     "flattener": "truffle-flattener ./contracts/InitialOffering/TXJPInitialOffering.sol | awk '/SPDX-License-Identifier/&&c++>0 {next} 1' | awk '/pragma experimental ABIEncoderV2;/&&c++>0 {next} 1' > ./OneRouter.full.sol"
   },

@@ -38,7 +38,7 @@ contract TXJPInitialOffering is Ownable {
     uint public constant START = 1625799600; //1day = 86400
     uint public constant END = START + 5 days + 9 hours;
     uint public constant TOTAL_DISTRIBUTE_AMOUNT = 36000e8;
-    uint public constant MINIMAL_PROVIDE_AMOUNT = 100 ether;
+    uint public constant MINIMAL_PROVIDE_AMOUNT = 1 ether;
     uint public totalProvided = 0;
     mapping(address => uint) public provided;
     IERC20 public TXJP;
